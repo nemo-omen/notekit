@@ -14,7 +14,7 @@
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(form),
+      body: new FormData(form)
     });
 
     if (browser) {
@@ -36,7 +36,8 @@
 
   function validateEmail(event: Event): boolean {
     const target: HTMLInputElement = event.target as HTMLInputElement;
-    let isValidEmail: boolean = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
+    let isValidEmail: boolean =
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
     return isValidEmail;
   }
 
@@ -66,12 +67,18 @@
       bind:this={emailInput}
       required
     />
-
-    <input type="email" name="email" id="email" placeholder="you@example.com" bind:value={email} required />
   </div>
   <div class="input-group">
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" bind:value={password} required min="6" max="128" />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      bind:value={password}
+      required
+      min="6"
+      max="128"
+    />
   </div>
   <div class="input-group">
     <label for="email">Password Confirmation</label>
@@ -86,16 +93,21 @@
       max="128"
     />
   </div>
-  <input type="submit" value="Sign Up" disabled={!isValidFormState} bind:this={submitButton} />
+  <input
+    type="submit"
+    value="Sign Up"
+    disabled={!isValidFormState}
+    bind:this={submitButton}
+  />
 </form>
 
 <style>
-  input:valid {
+  /* input:valid {
     border: inherit;
     background: inherit;
-  }
-  /* input:invalid {
+  } */
+  input:invalid {
     border: 1px solid tomato;
     background: #ffd9d2;
-  } */
+  }
 </style>
