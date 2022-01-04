@@ -7,7 +7,7 @@
     if (!user) {
       return {
         status: 302,
-        redirect: '/auth'
+        redirect: '/signin'
       };
     } else {
       const { data, error } = await supabase.from('notes').select('*');

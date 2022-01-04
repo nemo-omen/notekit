@@ -1,4 +1,18 @@
 /* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+input,
+button {
+  padding: 0.25em;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
