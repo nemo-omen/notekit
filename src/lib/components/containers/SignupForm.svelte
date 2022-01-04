@@ -6,15 +6,23 @@
   let form: HTMLFormElement;
   let submitButton: HTMLButtonElement;
   let emailInput: HTMLInputElement;
+  let passwordInput: HTMLInputElement;
+  let passwordConfirmationInput: HTMLInputElement;
+
   let email: string = '';
   let password: string = '';
   let passwordConfirmation: string = '';
+
+  let emailInvalidMessage = "That's not an email! (example@whatever.com).";
+  let passwordInvalidMessage = '';
+  let passwordConfirmationInvalidMessage = "Confirmation doesn't match password.";
+
   let isValidFormState: boolean = false;
 
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(form)
+      body: new FormData(form),
     });
 
     if (browser) {
@@ -36,8 +44,7 @@
 
   function validateEmail(event: Event): boolean {
     const target: HTMLInputElement = event.target as HTMLInputElement;
-    let isValidEmail: boolean =
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
+    let isValidEmail: boolean = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
     return isValidEmail;
   }
 
@@ -75,6 +82,7 @@
       name="password"
       id="password"
       bind:value={password}
+      bind:this={passwordInput}
       required
       min="6"
       max="128"
@@ -87,18 +95,14 @@
       name="confirmation"
       id="confirmation"
       bind:value={passwordConfirmation}
+      bind:this={passwordConfirmationInput}
       on:blur={confirm}
       required
       min="6"
       max="128"
     />
   </div>
-  <input
-    type="submit"
-    value="Sign Up"
-    disabled={!isValidFormState}
-    bind:this={submitButton}
-  />
+  <input type="submit" value="Sign Up" disabled={!isValidFormState} bind:this={submitButton} />
 </form>
 
 <style>
