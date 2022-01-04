@@ -9,21 +9,33 @@
   "devDependencies": {
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
+    "@types/cookie": "^0.4.1",
+    "prettier": "^2.4.1",
+    "prettier-plugin-svelte": "^2.4.0",
     "sass": "^1.45.1",
-    "svelte": "^3.38.3",
-    "svelte-preprocess": "^4.10.1"
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.6",
+    "svelte-preprocess": "^4.10.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.29.1",
     "bcrypt": "^5.0.1",
     "nanoid": "^3.1.30",
-    "prettier": "^2.3.2",
-    "prettier-plugin-svelte": "^2.3.1"
+    "cookie": "^0.4.1"
   },
   "prettier": {
-    "arrowParens": "always",
-    "singleQuote": true,
+    "printWidth": 120,
     "tabWidth": 2,
-    "trailingComma": "none"
+    "semi": true,
+    "bracketSpacing": true,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "svelteSortOrder": "scripts-options-markup-styles",
+    "svelteAllowShorthand": true,
+    "svelteBracketNewLine": true,
+    "svelteIndentScriptAndStyle": true
   }
 }
