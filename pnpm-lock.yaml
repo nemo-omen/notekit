@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@felte/reporter-dom': ^0.3.13
   '@supabase/supabase-js': ^1.29.1
   '@sveltejs/adapter-vercel': next
   '@sveltejs/kit': next
@@ -20,6 +21,7 @@ specifiers:
   typescript: ^4.4.3
 
 dependencies:
+  '@felte/reporter-dom': 0.3.13
   '@supabase/supabase-js': 1.29.1
   bcrypt: 5.0.1
   cookie: 0.4.1
@@ -48,6 +50,12 @@ packages:
 
   /@felte/core/0.3.0:
     resolution: {integrity: sha512-v3rOg8wdchnQoMYJCPLelaJmgyG3doibYFqKmoOj7iQlnI738fczEEjDToJfa9UUbYBRDdgfYHXrEtEK7kYIGg==}
+    dependencies:
+      '@felte/common': 0.6.0
+    dev: false
+
+  /@felte/reporter-dom/0.3.13:
+    resolution: {integrity: sha512-s8KAou8HwIrcXBVjOPMhQR6ijlig4I4Mkrqx+E5Ty2PHU8pvm/XUJKDWItiPnwYavx0ztd63lopDlog+slTGxA==}
     dependencies:
       '@felte/common': 0.6.0
     dev: false
