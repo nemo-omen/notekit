@@ -1,116 +1,83 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { browser } from '$app/env';
-  // import { onMount } from 'svelte';
+  import { createForm } from 'felte';
 
-  let form: HTMLFormElement;
   let submitButton: HTMLButtonElement;
 
-  let emailInput: HTMLInputElement;
-  let passwordInput: HTMLInputElement;
-  let passwordConfirmationInput: HTMLInputElement;
-
-  // let inputs = [emailInput, passwordInput, passwordConfirmationInput];
-
-  let email: string = '';
-  let password: string = '';
-  let passwordConfirmation: string = '';
+  let emailValue: string = '';
+  let passwordValue: string = '';
+  let passwordConfirmationValue: string = '';
 
   let emailInvalidMessage = "That's not an email! (example@whatever.com).";
-  let passwordInvalidMessage = '';
-  let passwordConfirmationInvalidMessage =
-    "Confirmation doesn't match password.";
+  let passwordInvalidMessage = 'Password not the right length.';
+  let passwordConfirmationInvalidMessage = "Confirmation doesn't match password.";
 
   let isValidFormState: boolean = false;
+
+  const { form, errors, touched, isValid, isSubmitting } = createForm({
+    validate: (values) => {
+      const errs = {};
+      if (!values.email || !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)) {
+        errs.email = 'Must be a valid email.';
+      }
+      if (!values.password) errs.password = ['Must not be empty', 'Must be over 8 characters'];
+      if (values.password && values.password.length < 8) {
+        errs.password = ['Must be over 8 characters'];
+      }
+
+      if (!values.confirmation) errs.confirmation = ['Must not be empty.', 'Must match password.'];
+
+      if (values.confirmation !== values.password) {
+        errs.confirmation = 'Must match password.';
+      }
+      return errs;
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      console.log($touched);
+    },
+  });
 
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(form)
+      body: new FormData(),
     });
 
     if (browser) {
       if (response.ok) goto('/notebook');
     }
   }
-
-  function confirm(event: Event): boolean {
-    const target = event.target as HTMLInputElement;
-    let isConfirmed: boolean = password === target.value;
-    return isConfirmed;
-  }
-
-  function validatePasswordLength(event: Event): boolean {
-    const target: HTMLInputElement = event.target as HTMLInputElement;
-    let isValidPasswordLength: boolean = target.value.trim().length > 6;
-    return isValidPasswordLength;
-  }
-
-  function validateEmail(event: Event): boolean {
-    const target: HTMLInputElement = event.target as HTMLInputElement;
-    let isValidEmail: boolean =
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
-    return isValidEmail;
-  }
-
-  function validateForm(event: Event) {
-    const target: HTMLFormElement = event.target as HTMLFormElement;
-    if (target.checkValidity) {
-    } else {
-      event.preventDefault();
-    }
-  }
 </script>
 
 <h2>Sign Up</h2>
-<form on:submit|preventDefault={signup} bind:this={form}>
+<form use:form>
   <div class="input-group">
     <label for="email">Email Address</label>
-    <input
-      type="email"
-      name="email"
-      id="email"
-      placeholder="you@example.com"
-      bind:value={email}
-      bind:this={emailInput}
-      required
-      pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{(2, 3)})+$"
-    />
+    <input type="email" name="email" id="email" placeholder="you@example.com" class={$errors.email ? 'invalid' : ''} />
   </div>
   <div class="input-group">
     <label for="password">Password</label>
-    <input
-      type="password"
-      name="password"
-      id="password"
-      bind:value={password}
-      bind:this={passwordInput}
-      required
-      min="6"
-      max="128"
-    />
+    <input type="password" name="password" id="password" class={$errors.password ? 'invalid' : ''} />
   </div>
   <div class="input-group">
-    <label for="email">Password Confirmation</label>
-    <input
-      type="password"
-      name="confirmation"
-      id="confirmation"
-      bind:value={passwordConfirmation}
-      bind:this={passwordConfirmationInput}
-      on:blur={confirm}
-      required
-      min="6"
-      max="128"
-    />
+    <label for="confirmation">Password Confirmation</label>
+    <input type="password" name="confirmation" id="confirmation" class={$errors.confirmation ? 'invalid' : ''} />
   </div>
   <input
     type="submit"
     value="Sign Up"
-    disabled={!isValidFormState}
-    bind:this={submitButton}
+    disabled={$errors.email || $errors.password || $errors.confirmation ? true : false}
   />
+  {#if $errors}
+    <pre>{JSON.stringify($errors)}</pre>
+  {/if}
 </form>
 
 <style>
+  .invalid {
+    border: 1px solid tomato;
+    background: rgb(255, 206, 197);
+  }
 </style>

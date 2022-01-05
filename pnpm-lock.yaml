@@ -7,12 +7,14 @@ specifiers:
   '@types/cookie': ^0.4.1
   bcrypt: ^5.0.1
   cookie: ^0.4.1
+  felte: ^0.9.0
   nanoid: ^3.1.30
   prettier: ^2.4.1
   prettier-plugin-svelte: ^2.4.0
   sass: ^1.45.1
   svelte: ^3.44.0
   svelte-check: ^2.2.6
+  svelte-forms: ^2.0.7
   svelte-preprocess: ^4.10.1
   tslib: ^2.3.1
   typescript: ^4.4.3
@@ -21,7 +23,9 @@ dependencies:
   '@supabase/supabase-js': 1.29.1
   bcrypt: 5.0.1
   cookie: 0.4.1
+  felte: 0.9.0_svelte@3.44.3
   nanoid: 3.1.30
+  svelte-forms: 2.0.7
 
 devDependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.35
@@ -37,6 +41,16 @@ devDependencies:
   typescript: 4.5.4
 
 packages:
+
+  /@felte/common/0.6.0:
+    resolution: {integrity: sha512-dLh+heGTGKQzIeUbLcJMEvDks3YTy99FFdUHg8/fxeIFSprUM/b4olK+tIMBrTE30AV2BFYeQHxB8hFpzUafAQ==}
+    dev: false
+
+  /@felte/core/0.3.0:
+    resolution: {integrity: sha512-v3rOg8wdchnQoMYJCPLelaJmgyG3doibYFqKmoOj7iQlnI738fczEEjDToJfa9UUbYBRDdgfYHXrEtEK7kYIGg==}
+    dependencies:
+      '@felte/common': 0.6.0
+    dev: false
 
   /@mapbox/node-pre-gyp/1.0.8:
     resolution: {integrity: sha512-CMGKi28CF+qlbXh26hDe6NxCd7amqeAzEqnS6IHeO6LoaKyM/n+Xw3HT1COdq8cuioOdlKdqn/hCmqPUOMOywg==}
@@ -602,6 +616,15 @@ packages:
       reusify: 1.0.4
     dev: true
 
+  /felte/0.9.0_svelte@3.44.3:
+    resolution: {integrity: sha512-B7ML7Xopy9D/PI2Z28wFQZ+wcUtB6mqMbKVBneHPWsphCZPFY0dE2asPd9n0lhgx0bvSO4n8Aq0VNlqt2mGFfw==}
+    peerDependencies:
+      svelte: ^3.31.0
+    dependencies:
+      '@felte/core': 0.3.0
+      svelte: 3.44.3
+    dev: false
+
   /fill-range/7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -748,6 +771,10 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
+
+  /is-promise/4.0.0:
+    resolution: {integrity: sha512-hvpoI6korhJMnej285dSg6nu1+e6uxs7zG3BYAm5byqDsgJNWwxzM6z6iZiAgQR4TJ30JmBTOwqZUw3WlyH3AQ==}
+    dev: false
 
   /is-typedarray/1.0.0:
     resolution: {integrity: sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=}
@@ -1164,6 +1191,12 @@ packages:
       - stylus
       - sugarss
     dev: true
+
+  /svelte-forms/2.0.7:
+    resolution: {integrity: sha512-T8c++5DcbA4EEfglst1KXeAKdm+J6k29g8Jnn+pD3OJECAr7tW6l0qArMYWfcrMHcGVvid6e9HjqIJEMzfhsnQ==}
+    dependencies:
+      is-promise: 4.0.0
+    dev: false
 
   /svelte-hmr/0.14.9_svelte@3.44.3:
     resolution: {integrity: sha512-bKE9+4qb4sAnA+TKHiYurUl970rjA0XmlP9TEP7K/ncyWz3m81kA4HOgmlZK/7irGK7gzZlaPDI3cmf8fp/+tg==}
