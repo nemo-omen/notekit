@@ -1,13 +1,16 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { browser } from '$app/env';
-  import { onMount } from 'svelte';
+  // import { onMount } from 'svelte';
 
   let form: HTMLFormElement;
   let submitButton: HTMLButtonElement;
+
   let emailInput: HTMLInputElement;
   let passwordInput: HTMLInputElement;
   let passwordConfirmationInput: HTMLInputElement;
+
+  // let inputs = [emailInput, passwordInput, passwordConfirmationInput];
 
   let email: string = '';
   let password: string = '';
@@ -15,14 +18,15 @@
 
   let emailInvalidMessage = "That's not an email! (example@whatever.com).";
   let passwordInvalidMessage = '';
-  let passwordConfirmationInvalidMessage = "Confirmation doesn't match password.";
+  let passwordConfirmationInvalidMessage =
+    "Confirmation doesn't match password.";
 
   let isValidFormState: boolean = false;
 
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(form),
+      body: new FormData(form)
     });
 
     if (browser) {
@@ -44,7 +48,8 @@
 
   function validateEmail(event: Event): boolean {
     const target: HTMLInputElement = event.target as HTMLInputElement;
-    let isValidEmail: boolean = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
+    let isValidEmail: boolean =
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(target.value);
     return isValidEmail;
   }
 
@@ -55,10 +60,6 @@
       event.preventDefault();
     }
   }
-
-  onMount(() => {
-    form.noValidate = true;
-  });
 </script>
 
 <h2>Sign Up</h2>
@@ -73,6 +74,7 @@
       bind:value={email}
       bind:this={emailInput}
       required
+      pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{(2, 3)})+$"
     />
   </div>
   <div class="input-group">
@@ -102,16 +104,13 @@
       max="128"
     />
   </div>
-  <input type="submit" value="Sign Up" disabled={!isValidFormState} bind:this={submitButton} />
+  <input
+    type="submit"
+    value="Sign Up"
+    disabled={!isValidFormState}
+    bind:this={submitButton}
+  />
 </form>
 
 <style>
-  /* input:valid {
-    border: inherit;
-    background: inherit;
-  } */
-  input:invalid {
-    border: 1px solid tomato;
-    background: #ffd9d2;
-  }
 </style>
