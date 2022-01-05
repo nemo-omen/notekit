@@ -1,27 +1,25 @@
-import { supabase } from '$services/supaase';
+import { supabase } from '$services/SupabaseService.ts';
 
 export async function post(request) {
-    let email = request.body.get('email');
-    let password = request.body.get('password');
+  let email = request.body.get('email');
+  let password = request.body.get('password');
 
-    const { session, error } = await supabase.auth.signup(email, password);
+  const { session, error } = await supabase.auth.signup(email, password);
 
-    if (error) {
-        return {
-            status: error.status,
-            body: error.message
-        };
-    }
-
+  if (error) {
     return {
-        status: 200,
-        body: 'success',
-        headers: {
-            'set-cookie': `session=${
-        session.user.email
-      }; Path=/; Secure; SameSite=Strict; expires=${new Date(
-        session.expires_at * 1000
-      ).toUTCString()};`
-        }
+      status: error.status,
+      body: error.message,
     };
+  }
+
+  return {
+    status: 200,
+    body: 'success',
+    headers: {
+      'set-cookie': `session=${session.user.email}; Path=/; Secure; SameSite=Strict; expires=${new Date(
+        session.expires_at * 1000,
+      ).toUTCString()};`,
+    },
+  };
 }
