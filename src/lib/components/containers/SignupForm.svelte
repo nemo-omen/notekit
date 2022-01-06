@@ -4,28 +4,32 @@
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
 
-  let submitButton: HTMLButtonElement;
   let signupForm: HTMLFormElement;
 
   const { form, errors, touched, isValid, isSubmitting } = createForm({
     validate: (values) => {
       const errs = {};
 
-      if (!values.email || !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)) {
+      if (
+        !values.email ||
+        !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)
+      ) {
         errs.email = 'Must be a valid email.';
       }
 
-      if (!values.password) errs.password = ['Must not be empty', 'Must be at least 8 characters'];
+      if (!values.password)
+        errs.password = ['Must not be empty', 'Must be at least 8 characters'];
 
       if (values.password && values.password.length < 8) {
         errs.password = ['Must be at least 8 characters'];
       }
 
-      if (values.password.length > 24) {
+      if (values.password && values.password.length > 24) {
         errs.password = ['Must be 24 characters or fewer'];
       }
 
-      if (!values.confirmation) errs.confirmation = ['Must not be empty.', 'Must match password.'];
+      if (!values.confirmation)
+        errs.confirmation = ['Must not be empty.', 'Must match password.'];
 
       if (values.confirmation !== values.password) {
         errs.confirmation = 'Must match password.';
@@ -36,19 +40,32 @@
     onSubmit: (values) => {
       signup();
     },
-    extend: [reporter({ single: true })],
+    extend: [reporter({ single: true })]
   });
 
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(signupForm),
+      body: new FormData(signupForm)
     });
 
     if (browser) {
-      if (response.ok) goto('/notebook');
+      if (!response.ok) {
+        console.error(response);
+      } else {
+        goto('/');
+      }
     }
   }
+
+  // async function signup(email, password) {
+  // console.log({ email, password });
+  // const { user, error } = await supabase.auth.signUp(email, password);
+
+  // if (user) console.log({ user });
+
+  // if (error) console.error({ error });
+  //   }
 </script>
 
 <h2>Sign Up</h2>
@@ -85,12 +102,17 @@
       aria-describedby="confirmation-validation"
       class={$errors.confirmation ? 'invalid' : ''}
     />
-    <div id="confirmation-validation" data-felte-reporter-dom-for="confirmation" />
+    <div
+      id="confirmation-validation"
+      data-felte-reporter-dom-for="confirmation"
+    />
   </div>
   <input
     type="submit"
     value="Sign Up"
-    disabled={$errors.email || $errors.password || $errors.confirmation ? true : false}
+    disabled={$errors.email || $errors.password || $errors.confirmation
+      ? true
+      : false}
   />
 </form>
 

@@ -1,10 +1,10 @@
 <script context="module">
   export async function load({ url, session }) {
     console.log({ session });
-    if (session.user) {
+    if (session) {
       return {
         status: 302,
-        redirect: '/notebook'
+        redirect: '/'
       };
     }
     return {};

@@ -1,10 +1,8 @@
 <script context="module">
   import { supabase } from '$services/SupabaseService.ts';
 
-  export async function load({ fetch, url }) {
-    const user = await supabase.auth.user();
-
-    if (!user) {
+  export async function load({ fetch, url, session }) {
+    if (!session) {
       return {
         status: 302,
         redirect: '/signin'
@@ -15,7 +13,7 @@
         return {
           props: {
             notes: data,
-            user
+            user: session.user
           }
         };
       }
