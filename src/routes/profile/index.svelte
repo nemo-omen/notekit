@@ -3,7 +3,7 @@
     if (session === null) {
       return {
         status: 302,
-        redirect: '/signin'
+        redirect: '/'
       };
     }
 
