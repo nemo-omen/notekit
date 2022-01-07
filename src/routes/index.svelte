@@ -2,14 +2,9 @@
   import { supabase } from '$services/SupabaseService.ts';
 
   export async function load({ fetch, url, session }) {
-    console.log({ session });
-    if (session === null) {
-      return {
-        status: 302,
-        redirect: '/signin'
-      };
-    } else {
+    if (session !== null) {
       const { data, error } = await supabase.from('notes').select('*');
+
       if (!error) {
         return {
           props: {
@@ -25,6 +20,8 @@
         }
       };
     }
+
+    return {};
   }
 </script>
 
