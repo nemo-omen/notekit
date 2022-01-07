@@ -2,6 +2,7 @@
   <nav>
     <a href="/">Home</a>
     <a href="/notebook">Notebook</a>
+    <a href="/profile">Profile</a>
   </nav>
 </header>
 

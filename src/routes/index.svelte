@@ -2,7 +2,8 @@
   import { supabase } from '$services/SupabaseService.ts';
 
   export async function load({ fetch, url, session }) {
-    if (!session) {
+    console.log({ session });
+    if (session === null) {
       return {
         status: 302,
         redirect: '/signin'

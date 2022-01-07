@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { createEventDispatcher } from 'svelte';
   import { browser } from '$app/env';
+  import { session } from '$app/stores';
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
 
+  const dispatch = createEventDispatcher();
   let signupForm: HTMLFormElement;
 
   const { form, errors, touched, isValid, isSubmitting } = createForm({
@@ -52,20 +54,16 @@
     if (browser) {
       if (!response.ok) {
         console.error(response);
-      } else {
-        goto('/');
       }
     }
+    const data = await response.json();
+    $session = data.email;
+    dispatchLogin();
   }
 
-  // async function signup(email, password) {
-  // console.log({ email, password });
-  // const { user, error } = await supabase.auth.signUp(email, password);
-
-  // if (user) console.log({ user });
-
-  // if (error) console.error({ error });
-  //   }
+  function dispatchLogin() {
+    dispatch('login');
+  }
 </script>
 
 <h2>Sign Up</h2>

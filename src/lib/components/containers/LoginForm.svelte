@@ -1,8 +1,11 @@
 <script lang="ts">
-  import { goto } from '$app/navigation';
+  import { createEventDispatcher } from 'svelte';
   import { browser } from '$app/env';
+  import { session } from '$app/stores';
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
+
+  const dispatch = createEventDispatcher();
 
   let signinForm: HTMLFormElement;
 
@@ -30,7 +33,6 @@
       return errs;
     },
     onSubmit: (values) => {
-      console.log();
       login();
     },
     extend: [reporter({ single: true })]
@@ -43,13 +45,17 @@
     });
 
     if (browser) {
-      console.log({ response });
       if (!response.ok) {
         console.error(response);
-      } else {
-        goto('/');
       }
     }
+    const data = await response.json();
+    $session = data.email;
+    dispatchLogin();
+  }
+
+  function dispatchLogin() {
+    dispatch('login');
   }
 </script>
 
