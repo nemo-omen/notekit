@@ -14,7 +14,7 @@ export async function get() {
     return {
         status: 302,
         headers: {
-            location: '/signin',
+            location: '/',
             'set-cookie': `session=; path=/; expires=0;`,
         },
     };
