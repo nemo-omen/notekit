@@ -3,7 +3,7 @@
     if (session) {
       return {
         status: 302,
-        redirect: '/'
+        redirect: '/notebook'
       };
     }
     return {};
@@ -11,13 +11,10 @@
 </script>
 
 <script>
-  import { session } from '$app/stores';
   import { goto } from '$app/navigation';
   import { browser } from '$app/env';
   import LoginForm from '$components/containers/LoginForm.svelte';
   import SignupForm from '$components/containers/SignupForm.svelte';
-
-  // console.log({ $session });
 
   let isSignup = true;
 
@@ -26,7 +23,9 @@
   }
 
   function setLogin() {
-    goto('/notebook');
+    if (browser) {
+      goto('/notebook');
+    }
   }
 </script>
 
