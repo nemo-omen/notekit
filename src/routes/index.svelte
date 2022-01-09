@@ -28,6 +28,7 @@
 
 <script>
   import NotebookPens from '$components/NotebookPens.svelte';
+  import NotebookPensCB from '$components/NotebookPensCB.svelte';
   import LinkButton from '$components/UI/LinkButton.svelte';
   export let notes;
   export let error;
@@ -47,7 +48,9 @@
     <LinkButton href="/signin?signup=true">Sign Up (it's free)</LinkButton>
   </div>
   <div class="hero-image">
-    <NotebookPens />
+    <!-- <img src="NotebookPensCB.svg" alt="Notebook and Pens" /> -->
+    <NotebookPensCB />
+    <!-- <NotebookPens /> -->
   </div>
 </div>
 

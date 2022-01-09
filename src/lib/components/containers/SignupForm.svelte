@@ -105,11 +105,4 @@
 </form>
 
 <style>
-  .invalid {
-    border: 1px solid tomato;
-    background: rgb(255, 220, 214);
-  }
-  .validation-error {
-    color: tomato;
-  }
 </style>

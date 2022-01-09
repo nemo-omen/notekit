@@ -58,7 +58,7 @@
   });
 </script>
 
-<div class="center-container">
+<div class="center-container auth-form">
   {#if isSignup}
     <SignupForm on:login={setLoggedin} />
     <p class="center-block">or</p>
