@@ -121,6 +121,11 @@ input[type='submit']:hover {
     font-weight: 600;
 }
 
+.svg-shadow {
+    opacity: 0.3;
+    fill: #000;
+}
+
 @media (min-width: 1280px) {
     main {
         max-width: 70%;

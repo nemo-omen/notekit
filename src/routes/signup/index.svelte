@@ -17,6 +17,7 @@
   import { goto } from '$app/navigation';
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
+  import LinkButton from '$components/UI/LinkButton.svelte';
 
   const dispatch = createEventDispatcher();
   let signupForm: HTMLFormElement;
@@ -114,6 +115,8 @@
       disabled={$errors.email || $errors.password || $errors.confirmation ? true : false}
     />
   </form>
+  <p style="text-align: center">or</p>
+  <LinkButton href="/login">Log In</LinkButton>
 </div>
 
 <style>

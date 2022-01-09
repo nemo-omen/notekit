@@ -16,6 +16,7 @@
   import { session } from '$app/stores';
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
+  import LinkButton from '$components/UI/LinkButton.svelte';
 
   let signinForm: HTMLFormElement;
 
@@ -78,4 +79,6 @@
     </div>
     <input type="submit" value="Login" />
   </form>
+  <p style="text-align: center">or</p>
+  <LinkButton href="/signup">Sign Up</LinkButton>
 </div>
