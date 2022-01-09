@@ -12,8 +12,8 @@
   </a>
   <nav>
     {#if !$session}
-      <a href="/signin?login=true">Login</a>
-      <LinkButton href="/signin?signup=true">
+      <a href="/login">Login</a>
+      <LinkButton href="/signup">
         <span style="font-size: 1rem"> Sign Up (it's free) </span>
       </LinkButton>
       <a href="https://github.com/nemo-omen/notekit" class="github-link">

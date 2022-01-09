@@ -1,0 +1,25 @@
+<svg viewBox="0 0 1723 2835" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0.367188" width="1722.63" height="2829.73" fill="white"/>
+  <circle cx="762.5" cy="2829.73" r="760.5" fill="#333333"/>
+  <g style="mix-blend-mode:color-burn">
+    <ellipse cx="944.5" cy="2293.91" rx="150.5" ry="145.5" transform="rotate(-90 944.5 2293.91)" fill="#909DA2"/>
+  </g>
+  <ellipse cx="914.485" cy="2283.91" rx="150.5" ry="145.5" transform="rotate(-90 914.485 2283.91)" fill="#909DA2"/>
+  <g style="mix-blend-mode:color-burn">
+    <ellipse rx="418.455" ry="431.457" transform="matrix(-0.52313 -0.852253 0.878783 -0.477221 1389.92 1429.88)" fill="#909DA2"/>
+  </g>
+  <ellipse rx="418.455" ry="431.457" transform="matrix(-0.52313 -0.852253 0.878783 -0.477221 1332.02 1379.5)" fill="#C8CED0"/>
+  <circle cx="671.986" cy="1132.61" r="291" fill="#ACB6B9"/>
+  <g style="mix-blend-mode:color-burn">
+    <circle cx="1092.04" cy="1942.41" r="291" fill="#909DA2"/>
+  </g>
+  <circle cx="1058.81" cy="1902.41" r="291" fill="#728288"/>
+  <g style="mix-blend-mode:color-burn">
+    <circle cx="783.32" cy="1556.45" r="437" transform="rotate(-120 783.32 1556.45)" fill="#909DA2"/>
+  </g>
+  <circle cx="733.953" cy="1526.45" r="437" transform="rotate(-120 733.953 1526.45)" fill="#00B3C6"/>
+  <g style="mix-blend-mode:color-burn">
+    <circle cx="1156.54" cy="976.173" r="523.178" fill="#909DA2"/>
+  </g>
+  <circle cx="1111.63" cy="931.622" r="523.178" fill="#FFC41D"/>
+</svg>

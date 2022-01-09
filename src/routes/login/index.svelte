@@ -1,11 +1,21 @@
+<script context="module">
+  export async function load({ url, session, params }) {
+    if (session) {
+      return {
+        status: 302,
+        redirect: '/notebook',
+      };
+    }
+    return {};
+  }
+</script>
+
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
+  import { goto } from '$app/navigation';
   import { browser } from '$app/env';
   import { session } from '$app/stores';
   import { createForm } from 'felte';
   import reporter from '@felte/reporter-dom';
-
-  const dispatch = createEventDispatcher();
 
   let signinForm: HTMLFormElement;
 
@@ -44,29 +54,28 @@
     if (browser) {
       if (!response.ok) {
         console.error(response);
+      } else {
+        const data = await response.json();
+        $session = data.email;
+        goto('./notebook');
       }
     }
-    const data = await response.json();
-    $session = data.email;
-    dispatchLogin();
-  }
-
-  function dispatchLogin() {
-    dispatch('login');
   }
 </script>
 
-<h2 class="form-title">Log In</h2>
-<form use:form bind:this={signinForm}>
-  <div class="input-group">
-    <label for="email">Email Address</label>
-    <input type="email" name="email" id="email" placeholder="you@example.com" />
-    <div id="email-validation" data-felte-reporter-dom-for="email" />
-  </div>
-  <div class="input-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" />
-    <div id="password-validation" data-felte-reporter-dom-for="password" />
-  </div>
-  <input type="submit" value="Login" />
-</form>
+<div class="center-container auth-form">
+  <h2 class="form-title">Log In</h2>
+  <form use:form bind:this={signinForm}>
+    <div class="input-group">
+      <label for="email">Email Address</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" />
+      <div id="email-validation" data-felte-reporter-dom-for="email" />
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" />
+      <div id="password-validation" data-felte-reporter-dom-for="password" />
+    </div>
+    <input type="submit" value="Login" />
+  </form>
+</div>

@@ -27,7 +27,7 @@
 </script>
 
 <script>
-  import NotebookPens from '$components/NotebookPens.svelte';
+  // import NotebookPens from '$components/NotebookPens.svelte';
   import NotebookPensCB from '$components/NotebookPensCB.svelte';
   import LinkButton from '$components/UI/LinkButton.svelte';
   export let notes;
@@ -45,7 +45,7 @@
     <p class="heading-message">
       It syncs where you need it to, links easily between documents, and lets you edit with whoever you want.
     </p>
-    <LinkButton href="/signin?signup=true">Sign Up (it's free)</LinkButton>
+    <LinkButton href="/signup">Sign Up (it's free)</LinkButton>
   </div>
   <div class="hero-image">
     <!-- <img src="NotebookPensCB.svg" alt="Notebook and Pens" /> -->
