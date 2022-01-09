@@ -30,7 +30,7 @@
     if (browser) {
       if (isSignup === true) {
         goto('signin?login=true');
-      } else {
+      } else if (isLogin === true) {
         goto('signin?signup=true');
       }
     }
