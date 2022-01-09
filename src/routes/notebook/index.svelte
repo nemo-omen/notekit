@@ -3,14 +3,14 @@
     if (session === null) {
       return {
         status: 302,
-        redirect: '/signin'
+        redirect: '/signin',
       };
     }
 
     return {
       props: {
-        email: session
-      }
+        email: session,
+      },
     };
   }
 </script>
@@ -24,5 +24,3 @@
     goto('/signin');
   }
 </script>
-
-<h1>Notebook</h1>
