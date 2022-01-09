@@ -3,7 +3,7 @@
     if (session) {
       return {
         status: 302,
-        redirect: '/notebook'
+        redirect: '/notebook',
       };
     }
     return {};
@@ -32,9 +32,11 @@
 <div class="center-container">
   {#if isSignup}
     <SignupForm on:login={setLogin} />
+    <p class="center-block">or</p>
     <button on:click={toggleLogin}>Log In Instead</button>
   {:else}
     <LoginForm on:login={setLogin} />
+    <p class="center-block">or</p>
     <button on:click={toggleLogin}>Sign Up Instead</button>
   {/if}
 </div>

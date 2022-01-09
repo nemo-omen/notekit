@@ -10,15 +10,15 @@
         return {
           props: {
             notes: data,
-            user: session.user
-          }
+            user: session.user,
+          },
         };
       }
 
       return {
         props: {
-          error: error
-        }
+          error: error,
+        },
       };
     }
 
@@ -42,10 +42,9 @@
       <span class="bold-text">NoteKit</span> makes notetaking simple.
     </p>
     <p class="heading-message">
-      It syncs where you need it to, links easily between documents, and lets
-      you edit with whoever you want.
+      It syncs where you need it to, links easily between documents, and lets you edit with whoever you want.
     </p>
-    <LinkButton innerText="Sign Up (it's free)" href="/signin" />
+    <LinkButton href="/signin">Sign Up (it's free)</LinkButton>
   </div>
   <div class="hero-image">
     <NotebookPens />

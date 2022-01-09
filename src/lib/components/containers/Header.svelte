@@ -12,7 +12,9 @@
   </a>
   <nav>
     {#if !$session}
-      <LinkButton innerText="Sign Up (it's free)" href="/signin" />
+      <LinkButton href="/signin">
+        <span style="font-size: 1rem"> Sign Up (it's free) </span>
+      </LinkButton>
       <a href="https://github.com/nemo-omen/notekit" class="github-link">
         <GithubLogo />
       </a>
@@ -32,6 +34,7 @@
     font-family: var(--sans);
     font-weight: 600;
     font-size: 1.25rem;
+    color: #333333;
   }
   nav {
     display: flex;
@@ -44,6 +47,11 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    cursor: pointer;
+  }
+
+  .brand:hover {
+    color: #222222;
   }
 
   .brand-text {

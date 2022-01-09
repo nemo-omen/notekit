@@ -13,10 +13,7 @@
     validate: (values) => {
       const errs = {};
 
-      if (
-        !values.email ||
-        !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)
-      ) {
+      if (!values.email || !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)) {
         errs.email = 'Must be a valid email.';
       }
 
@@ -35,13 +32,13 @@
     onSubmit: (values) => {
       login();
     },
-    extend: [reporter({ single: true })]
+    extend: [reporter({ single: true })],
   });
 
   async function login() {
     const response = await fetch('/login', {
       method: 'post',
-      body: new FormData(signinForm)
+      body: new FormData(signinForm),
     });
 
     if (browser) {
@@ -59,7 +56,7 @@
   }
 </script>
 
-<h2>Log In</h2>
+<h2 class="form-title">Log In</h2>
 <form use:form bind:this={signinForm}>
   <div class="input-group">
     <label for="email">Email Address</label>

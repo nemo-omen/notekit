@@ -12,15 +12,11 @@
     validate: (values) => {
       const errs = {};
 
-      if (
-        !values.email ||
-        !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)
-      ) {
+      if (!values.email || !/^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(values.email)) {
         errs.email = 'Must be a valid email.';
       }
 
-      if (!values.password)
-        errs.password = ['Must not be empty', 'Must be at least 8 characters'];
+      if (!values.password) errs.password = ['Must not be empty', 'Must be at least 8 characters'];
 
       if (values.password && values.password.length < 8) {
         errs.password = ['Must be at least 8 characters'];
@@ -30,8 +26,7 @@
         errs.password = ['Must be 24 characters or fewer'];
       }
 
-      if (!values.confirmation)
-        errs.confirmation = ['Must not be empty.', 'Must match password.'];
+      if (!values.confirmation) errs.confirmation = ['Must not be empty.', 'Must match password.'];
 
       if (values.confirmation !== values.password) {
         errs.confirmation = 'Must match password.';
@@ -42,13 +37,13 @@
     onSubmit: (values) => {
       signup();
     },
-    extend: [reporter({ single: true })]
+    extend: [reporter({ single: true })],
   });
 
   async function signup() {
     const response = await fetch('/signup', {
       method: 'post',
-      body: new FormData(signupForm)
+      body: new FormData(signupForm),
     });
 
     if (browser) {
@@ -66,7 +61,7 @@
   }
 </script>
 
-<h2>Sign Up</h2>
+<h2 class="form-title">Sign Up</h2>
 <form use:form bind:this={signupForm}>
   <div class="input-group">
     <label for="email">Email Address</label>
@@ -78,7 +73,7 @@
       placeholder="you@example.com"
       class={$errors.email ? 'invalid' : ''}
     />
-    <div id="email-validation" data-felte-reporter-dom-for="email" />
+    <div id="email-validation" data-felte-reporter-dom-for="email" class="validation-error" />
   </div>
   <div class="input-group">
     <label for="password">Password</label>
@@ -89,7 +84,7 @@
       aria-describedby="password-validation"
       class={$errors.password ? 'invalid' : ''}
     />
-    <div id="password-validation" data-felte-reporter-dom-for="password" />
+    <div id="password-validation" data-felte-reporter-dom-for="password" class="validation-error" />
   </div>
   <div class="input-group">
     <label for="confirmation">Password Confirmation</label>
@@ -100,23 +95,21 @@
       aria-describedby="confirmation-validation"
       class={$errors.confirmation ? 'invalid' : ''}
     />
-    <div
-      id="confirmation-validation"
-      data-felte-reporter-dom-for="confirmation"
-    />
+    <div id="confirmation-validation" data-felte-reporter-dom-for="confirmation" class="validation-error" />
   </div>
   <input
     type="submit"
     value="Sign Up"
-    disabled={$errors.email || $errors.password || $errors.confirmation
-      ? true
-      : false}
+    disabled={$errors.email || $errors.password || $errors.confirmation ? true : false}
   />
 </form>
 
 <style>
   .invalid {
     border: 1px solid tomato;
-    background: rgb(255, 206, 197);
+    background: rgb(255, 220, 214);
+  }
+  .validation-error {
+    color: tomato;
   }
 </style>

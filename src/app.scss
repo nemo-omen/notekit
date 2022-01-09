@@ -2,41 +2,91 @@
 
 @import './reset.css';
 :root {
-    --serif: 'Eczar';
-    --sans: 'Open Sans';
+  --serif: 'Eczar';
+  --sans: 'Open Sans';
+  --dark: #333333;
+  --darker: #222222;
+  --light: #ebebeb;
+  --accent: #543889;
+  --hover: var(--darker);
+  --foreground: var(--dark);
+  --background: var(--light);
+  --shadow: var(--accent);
+  color: var(--dark);
 }
 
 main {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--sans);
 }
 
-input,
-button {
-    padding: 0.25em;
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  border: 1px solid var(--dark);
+}
+
+input {
+  padding: 0.5rem;
+}
+
+.link-button,
+button,
+input[type='submit'] {
+  display: flex;
+  justify-content: center;
+  background-color: #333333;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  text-align: center;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.link-button:hover,
+button:hover,
+input[type='submit']:hover {
+  background-color: #222222;
 }
 
 .center-container {
-    width: 20rem;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  width: 20rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.center-block {
+  display: block;
+  text-align: center;
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-title {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 @media (min-width: 1280px) {
-    main {
-        max-width: 70%;
-    }
+  main {
+    max-width: 70%;
+  }
 }
