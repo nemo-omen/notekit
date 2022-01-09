@@ -45,6 +45,8 @@
         } else {
           isSignup = true;
         }
+      } else {
+        goto(url);
       }
     }
   }
