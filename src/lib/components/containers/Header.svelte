@@ -12,7 +12,8 @@
   </a>
   <nav>
     {#if !$session}
-      <LinkButton href="/signin">
+      <a href="/signin?login=true">Login</a>
+      <LinkButton href="/signin?signup=true">
         <span style="font-size: 1rem"> Sign Up (it's free) </span>
       </LinkButton>
       <a href="https://github.com/nemo-omen/notekit" class="github-link">
@@ -31,27 +32,27 @@
     display: flex;
     justify-content: space-between;
     margin-block: 1rem;
-    font-family: var(--sans);
+    /* font-family: var(--sans); */
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: var(--step-0);
     color: #333333;
   }
   nav {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: var(--step-2);
   }
 
   .brand {
-    font-size: 2rem;
+    font-size: var(--step-1);
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--step-0);
     cursor: pointer;
   }
 
   .brand:hover {
-    color: #222222;
+    color: var(--darker);
   }
 
   .brand-text {

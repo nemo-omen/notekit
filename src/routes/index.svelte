@@ -44,7 +44,7 @@
     <p class="heading-message">
       It syncs where you need it to, links easily between documents, and lets you edit with whoever you want.
     </p>
-    <LinkButton href="/signin">Sign Up (it's free)</LinkButton>
+    <LinkButton href="/signin?signup=true">Sign Up (it's free)</LinkButton>
   </div>
   <div class="hero-image">
     <NotebookPens />
@@ -54,7 +54,7 @@
 <style lang="scss">
   .hero {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 5fr 6fr;
     gap: 8rem;
     margin-block: 8rem;
     font-family: var(--serif);
@@ -68,7 +68,6 @@
   .message {
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     gap: 3rem;
     align-items: flex-start;
     flex-basis: 1;
@@ -76,21 +75,10 @@
   .bold-text {
     font-weight: 600;
   }
-  h2 {
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: tomato;
-    font-size: 2rem;
-  }
+
   .heading-message {
-    font-size: 1.75rem;
+    font-size: var(--step-0);
     letter-spacing: 0.125em;
     font-weight: 500;
-  }
-  .heading-callout {
-    font-size: 2.5rem;
-    color: tomato;
-    font-weight: 800;
-    letter-spacing: 0.075em;
   }
 </style>
