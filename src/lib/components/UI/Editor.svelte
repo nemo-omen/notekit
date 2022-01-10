@@ -24,16 +24,13 @@
 
 <style>
   .editor {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
+    width: 80%;
+    height: 100%;
+    background-color: var(--dark);
   }
   :global(.ProseMirror) {
     background-color: var(--dark);
-    height: 100%;
+    /* height: 100%; */
     caret-color: var(--red);
     padding: var(--step--1);
     color: var(--light);

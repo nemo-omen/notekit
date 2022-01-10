@@ -54,8 +54,10 @@ body {
 }
 
 main {
-    margin: 0 auto;
+    position: relative;
+    margin: 4rem auto;
     height: 100%;
+    z-index: 1;
 }
 
 .page-content {

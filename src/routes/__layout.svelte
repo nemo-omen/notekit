@@ -88,7 +88,4 @@
   svg .svg-shadow {
     mix-blend-mode: color-burn;
   }
-  main {
-    z-index: 1;
-  }
 </style>
