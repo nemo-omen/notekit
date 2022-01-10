@@ -30,7 +30,7 @@
 
 <div class="workspace page-content" data-flex-splitter-horizontal>
   <Sidebar />
-  <div role="separator" />
+  <div role="separator" class="separator" />
   <Editor />
 </div>
 
@@ -40,5 +40,14 @@
     display: flex;
     height: 100%;
     width: 100%;
+  }
+
+  .separator {
+    background-color: var(--dark--1);
+  }
+
+  .separator:hover,
+  .separator:active {
+    background-color: var(--dark--2);
   }
 </style>
