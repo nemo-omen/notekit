@@ -7,7 +7,7 @@
 
 <Header />
 
-{#if $page.url.pathname === '/'}
+<!-- {#if $page.url.pathname === '/'}
   <div class="background-svg">
     <svg width="1092" height="1092" viewBox="0 0 1092 1092" fill="none" class="yellow-circle bg-circle">
       <circle cx="568.539" cy="568.173" r="523.178" class="svg-shadow" />
@@ -37,7 +37,7 @@
       <circle cx="291.806" cy="291.406" r="291" fill="#728288" />
     </svg>
   </div>
-{/if}
+{/if} -->
 
 <main>
   <slot />

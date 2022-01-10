@@ -22,6 +22,10 @@
     {:else}
       <a href="/notebook">Notebook</a>
       <a href="/profile">Profile</a>
+      <a href="/help">Help</a>
+      <a href="https://github.com/nemo-omen/notekit" class="github-link">
+        <GithubLogo />
+      </a>
     {/if}
   </nav>
 </header>
