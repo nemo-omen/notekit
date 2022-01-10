@@ -18,9 +18,11 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
   import { session } from '$app/stores';
+  import Editor from '$components/UI/Editor.svelte';
   export let email;
-
   if (!email && !$session) {
     goto('/signin');
   }
 </script>
+
+<Editor />
