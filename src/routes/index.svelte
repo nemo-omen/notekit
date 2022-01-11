@@ -48,33 +48,37 @@
     <LinkButton href="/signup">Sign Up (it's free)</LinkButton>
   </div>
   <div class="hero-image">
-    <!-- <img src="NotebookPensCB.svg" alt="Notebook and Pens" /> -->
     <NotebookPensCB />
-    <!-- <NotebookPens /> -->
   </div>
 </div>
 
 <style lang="scss">
   .hero {
-    display: grid;
-    grid-template-columns: 5fr 6fr;
-    gap: 8rem;
-    margin-block: 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin: 4rem 2rem;
     font-family: var(--serif);
   }
+
   .hero-image {
     display: flex;
     align-items: center;
     flex-basis: 1;
+    margin: 0 25vw;
+    order: 1;
   }
 
   .message {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 3rem;
-    align-items: flex-start;
     flex-basis: 1;
+    text-align: center;
+    order: 2;
   }
+
   .bold-text {
     font-weight: 600;
   }
@@ -83,5 +87,30 @@
     font-size: var(--step-0);
     letter-spacing: 0.125em;
     font-weight: 500;
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 8rem;
+    }
+
+    .message {
+      align-items: flex-start;
+      text-align: left;
+      order: 1;
+    }
+
+    .hero-image {
+      margin: 0;
+      order: 2;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .hero-image {
+      margin: 0 15vw;
+    }
   }
 </style>

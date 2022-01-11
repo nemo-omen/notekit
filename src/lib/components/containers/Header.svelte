@@ -32,10 +32,9 @@
 
 <style>
   header {
-    margin: 0 auto;
+    margin: 1rem 2rem;
     display: flex;
     justify-content: space-between;
-    margin-block: 1rem;
     /* font-family: var(--sans); */
     font-weight: 600;
     font-size: var(--step-0);
@@ -78,6 +77,15 @@
   @media (min-width: 1280px) {
     header {
       width: 70%;
+      align-items: center;
+      margin: 1rem auto;
+    }
+  }
+
+  @media (max-width: 550px) {
+    header {
+      flex-direction: column;
+      gap: var(--step-0);
       align-items: center;
     }
   }
