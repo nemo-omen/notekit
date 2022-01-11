@@ -16,13 +16,21 @@
 </script>
 
 <script lang="ts">
-  import 'flex-splitter-directive';
   import 'flex-splitter-directive/styles.min.css';
   import { goto } from '$app/navigation';
   import { session } from '$app/stores';
+  import { browser } from '$app/env';
   import Editor from '$components/UI/Editor.svelte';
   import Sidebar from '$components/UI/Sidebar.svelte';
   export let email;
+
+  let splitter;
+  if (browser) {
+    (async () => {
+      splitter = await import('flex-splitter-directive');
+    })();
+  }
+
   if (!email && !$session) {
     goto('/signin');
   }

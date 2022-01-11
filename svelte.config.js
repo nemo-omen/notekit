@@ -11,9 +11,9 @@ export default {
             css: {
                 preprocessorOptions: {
                     scss: {
-                        additionalData: '@use "src/variables.scss" as *;'
-                    }
-                }
+                        additionalData: '@use "src/variables.scss" as *;',
+                    },
+                },
             },
             resolve: {
                 alias: {
@@ -21,17 +21,20 @@ export default {
                     $models: path.resolve('./src/lib/models'),
                     $services: path.resolve('./src/lib/services'),
                     $shared: path.resolve('./src/lib/shared'),
-                    $components: path.resolve('./src/lib/components')
-                }
-            }
-        }
+                    $components: path.resolve('./src/lib/components'),
+                },
+            },
+            optimizeDeps: {
+                include: ['flex-splitter-directive'],
+            },
+        },
     },
 
     preprocess: [
         preprocess({
             scss: {
-                prependData: '@use "src/variables.scss" as *;'
-            }
-        })
-    ]
+                prependData: '@use "src/variables.scss" as *;',
+            },
+        }),
+    ],
 };

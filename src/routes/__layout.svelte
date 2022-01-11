@@ -2,7 +2,6 @@
   import Header from '$components/containers/Header.svelte';
   import '../app.scss';
   import { page } from '$app/stores';
-  console.log('$page: ', $page);
 </script>
 
 <Header />
