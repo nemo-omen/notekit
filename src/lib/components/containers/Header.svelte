@@ -14,7 +14,7 @@
     {#if !$session}
       <a href="/login">Login</a>
       <LinkButton href="/signup">
-        <span style="font-size: 1rem"> Sign Up (it's free) </span>
+        <span style="font-size: 1rem"> Sign Up <span class="big-only">(it's free)</span> </span>
       </LinkButton>
       <a href="https://github.com/nemo-omen/notekit" class="github-link">
         <GithubLogo />
@@ -74,11 +74,17 @@
     color: #222222;
   }
 
+  @media (min-width: 1024px) {
+    header {
+      width: 80%;
+      align-items: center;
+      margin: 1rem auto;
+    }
+  }
+
   @media (min-width: 1280px) {
     header {
       width: 70%;
-      align-items: center;
-      margin: 1rem auto;
     }
   }
 
@@ -87,6 +93,10 @@
       flex-direction: column;
       gap: var(--step-0);
       align-items: center;
+    }
+    nav,
+    :global(.link-button) {
+      font-size: var(--step-0);
     }
   }
 </style>
