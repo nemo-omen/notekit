@@ -24,10 +24,9 @@
   import Sidebar from '$components/UI/Sidebar.svelte';
   export let email;
 
-  let splitter;
   if (browser) {
     (async () => {
-      splitter = await import('flex-splitter-directive');
+      await import('flex-splitter-directive');
     })();
   }
 
