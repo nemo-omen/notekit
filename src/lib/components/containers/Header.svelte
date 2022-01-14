@@ -38,7 +38,7 @@
     /* font-family: var(--sans); */
     font-weight: 600;
     font-size: var(--step-0);
-    color: #333333;
+    color: var(--foreground);
   }
   nav {
     display: flex;
@@ -55,7 +55,7 @@
   }
 
   .brand:hover {
-    color: var(--darker);
+    color: var(--accent-0);
   }
 
   .brand-text {
@@ -67,11 +67,11 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: #333333;
+    color: var(--foreground);
   }
 
   .github-link:hover {
-    color: #222222;
+    color: var(--accent-0);
   }
 
   @media (min-width: 1024px) {

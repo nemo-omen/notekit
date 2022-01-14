@@ -3,7 +3,7 @@
     if (session === null) {
       return {
         status: 302,
-        redirect: '/signin',
+        redirect: '/login',
       };
     }
 
@@ -23,23 +23,27 @@
   import Editor from '$components/UI/Editor.svelte';
   import Sidebar from '$components/UI/Sidebar.svelte';
   export let email;
+  let splitReady = false;
 
   if (browser) {
     (async () => {
       await import('flex-splitter-directive');
+      splitReady = true;
     })();
   }
 
   if (!email && !$session) {
-    goto('/signin');
+    goto('/login');
   }
 </script>
 
-<div class="workspace page-content" data-flex-splitter-horizontal>
-  <Sidebar />
-  <div role="separator" class="separator" />
-  <Editor />
-</div>
+{#if splitReady}
+  <div class="workspace page-content" data-flex-splitter-horizontal>
+    <Sidebar />
+    <div role="separator" class="separator" />
+    <Editor />
+  </div>
+{/if}
 
 <style>
   .workspace {
@@ -50,11 +54,14 @@
   }
 
   .separator {
-    background-color: var(--dark--1);
+    background-color: var(--foreground);
+    border-left: 1px solid var(--dark--2);
+    width: 0.25rem !important;
   }
 
   .separator:hover,
   .separator:active {
-    background-color: var(--dark--2);
+    border-left-color: transparent;
+    background-color: var(--accent-3);
   }
 </style>
